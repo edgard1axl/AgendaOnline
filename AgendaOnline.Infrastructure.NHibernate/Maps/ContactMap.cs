@@ -10,6 +10,9 @@ namespace AgendaOnline.Infrastructure.NHibernate.Maps
         {
             Table("contact");
             Id(x => x.Id, "Id");
+            Map(x => x.Address).Column("street");
+            Map(x => x.Company).Column("company");
+            Map(x => x.Name).Column("name");            
         }
     }
 }
