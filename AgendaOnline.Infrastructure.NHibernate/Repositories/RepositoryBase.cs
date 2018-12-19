@@ -17,8 +17,7 @@ namespace AgendaOnline.Infrastructure.NHibernate.Repositories
         public IList<T> GetAll()
         {
             using (ISession session = NHibernateHelper.OpenSession())
-                return (from t in session.Query<T>()
-                        select t).ToList();
+                return session.QueryOver<T>().List();
         }
 
         public IList<T> ReturnByHql(string hql)
