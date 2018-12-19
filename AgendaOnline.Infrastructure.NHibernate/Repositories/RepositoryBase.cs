@@ -3,7 +3,6 @@ using System.Linq;
 using AgendaOnline.Domain.Repositories;
 using AgendaOnline.Infrastructure.NHibernate.Helper;
 using NHibernate;
-using NHibernate.Linq;
 
 namespace AgendaOnline.Infrastructure.NHibernate.Repositories
 {
@@ -18,7 +17,7 @@ namespace AgendaOnline.Infrastructure.NHibernate.Repositories
         public IList<T> GetAll()
         {
             using (ISession session = NHibernateHelper.OpenSession())
-                return (from t in session.Linq<T>()
+                return (from t in session.Query<T>()
                         select t).ToList();
         }
 
