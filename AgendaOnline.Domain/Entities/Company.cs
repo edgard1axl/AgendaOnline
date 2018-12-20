@@ -11,6 +11,6 @@ namespace AgendaOnline.Domain.Entities
             Name = name;
         }
 
-        public string Name { get; private set; }
+        public virtual string Name { get; private set; }
     }
 }

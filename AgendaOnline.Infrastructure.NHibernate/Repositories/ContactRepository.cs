@@ -1,17 +1,28 @@
 ﻿using AgendaOnline.Domain.Entities;
 using AgendaOnline.Domain.Repositories;
-using AgendaOnline.Domain.ValueObjects;
+using AgendaOnline.Infrastructure.NHibernate.Helper;
+using NHibernate;
 using System;
 using System.Collections.Generic;
-using System.Text;
+
 
 namespace AgendaOnline.Infrastructure.NHibernate.Repositories
 {
     public class ContactRepository : RepositoryBase<Contact>, IContactRepository
     {
-        public Contact GetByName(Name name)
+        public IList<Contact> GetByName(string name)
         {
-            throw new NotImplementedException();
+            IList<Contact> contacts;
+
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                contacts = session.QueryOver<Contact>()
+                    .Where(c => c.Name.FirstName == name)
+                    .List();
+            }
+
+            return contacts;
         }
+        
     }
 }

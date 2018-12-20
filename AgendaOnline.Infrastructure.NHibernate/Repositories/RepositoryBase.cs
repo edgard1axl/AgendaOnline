@@ -6,7 +6,7 @@ using NHibernate;
 
 namespace AgendaOnline.Infrastructure.NHibernate.Repositories
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         public T GetById(int id)
         {
@@ -32,24 +32,36 @@ namespace AgendaOnline.Infrastructure.NHibernate.Repositories
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.SaveOrUpdate(entity);
+                    session.SaveAsync(entity);
                     transaction.Commit();
                 }
             }
             return entity;
         }
 
+        public T Update(T entity)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.UpdateAsync(entity);
+                    transaction.Commit();
+                }
+            }
+            return entity;
+        }
         public T Delete(T entity)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Delete(entity);
+                    session.DeleteAsync(entity);
                     transaction.Commit();
                 }
             }
             return entity;
-        }
+        }        
     }
 }

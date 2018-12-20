@@ -22,8 +22,8 @@ namespace AgendaOnline.Infrastructure.NHibernate.Helper
             }
 
             var config = Fluently.Configure()
-                    .Database(MsSqlConfiguration.MsSql2005.ConnectionString(
-                c => c.Database("agenda").Server("localhost").Username("usuario").Password("senha")
+                    .Database(MySQLConfiguration.Standard.ConnectionString(
+                c => c.Database("agendaonline1").Server("agendaonline1.mysql.uhserver.com").Username("agendaonline").Password("Edgard1axl!@")
 
                     )
                 )

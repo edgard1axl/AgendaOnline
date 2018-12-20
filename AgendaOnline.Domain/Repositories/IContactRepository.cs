@@ -8,6 +8,6 @@ namespace AgendaOnline.Domain.Repositories
 {
     public interface IContactRepository
     {
-        Contact GetByName(Name name);
+        IList<Contact> GetByName(string name);
     }
 }
