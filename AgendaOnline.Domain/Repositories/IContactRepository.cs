@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AgendaOnline.Domain.Repositories
 {
-    public interface IContactRepository
+    public interface IContactRepository : IRepositoryBase<Contact>
     {
         IList<Contact> GetByName(string name);
     }

@@ -22,7 +22,7 @@ namespace AgendaOnline.Infrastructure.NHibernate.Repositories
             }
 
             return contacts;
-        }
+        }       
         
     }
 }

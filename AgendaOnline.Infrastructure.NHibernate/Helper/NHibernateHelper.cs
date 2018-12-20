@@ -32,11 +32,11 @@ namespace AgendaOnline.Infrastructure.NHibernate.Helper
 
               // Cria as tabelas do Banco de Dados
 
-              .ExposeConfiguration(cfg =>
-              {
-                  new SchemaUpdate(cfg)
-                    .Execute(false, true);
-              })
+              //.ExposeConfiguration(cfg =>
+              //{
+              //    new SchemaUpdate(cfg)
+              //      .Execute(false, true);
+              //})
                 //.ExposeConfiguration(cfg =>
                 //{
                 //    new SchemaExport(cfg)

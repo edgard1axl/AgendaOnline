@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AgendaOnline.Domain.Repositories
 {
@@ -9,7 +10,7 @@ namespace AgendaOnline.Domain.Repositories
         T GetById(int id);
         IList<T> GetAll();
         IList<T> ReturnByHql(string hql);
-        T Save(T item);
+        Task<T> Save(T item);
         T Delete(T item);
     }
 }

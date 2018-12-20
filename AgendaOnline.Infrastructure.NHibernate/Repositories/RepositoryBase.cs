@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AgendaOnline.Domain.Repositories;
 using AgendaOnline.Infrastructure.NHibernate.Helper;
 using NHibernate;
@@ -26,13 +27,13 @@ namespace AgendaOnline.Infrastructure.NHibernate.Repositories
                 return session.CreateQuery(hql).List<T>();
         }
 
-        public T Save(T entity)
+        public async Task<T> Save(T entity)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.SaveAsync(entity);
+                    await session.SaveAsync(entity);
                     transaction.Commit();
                 }
             }
