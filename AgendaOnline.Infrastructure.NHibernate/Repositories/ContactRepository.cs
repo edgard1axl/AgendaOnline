@@ -10,6 +10,11 @@ namespace AgendaOnline.Infrastructure.NHibernate.Repositories
 {
     public class ContactRepository : RepositoryBase<Contact>, IContactRepository
     {
+
+        public ContactRepository(ISessionFactory sessionFactory)
+            :base(sessionFactory)
+        { }
+
         public IList<Contact> GetByName(string name)
         {
             IList<Contact> contacts;
@@ -17,7 +22,7 @@ namespace AgendaOnline.Infrastructure.NHibernate.Repositories
             using (ISession session = NHibernateHelper.OpenSession())
             {
                 contacts = session.QueryOver<Contact>()
-                    .Where(c => c.Name.FirstName == name)
+                    .Where(c => c.FirstName == name)
                     .List();
             }
 

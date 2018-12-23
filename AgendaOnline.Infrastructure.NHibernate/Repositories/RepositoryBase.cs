@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AgendaOnline.Domain.Repositories;
@@ -7,46 +8,61 @@ using NHibernate;
 
 namespace AgendaOnline.Infrastructure.NHibernate.Repositories
 {
-    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
+        private ISessionFactory _sessionFactory;
+        private ISession _session;
+
+        public RepositoryBase(ISessionFactory sessionFactoty)
+        {
+            _sessionFactory = sessionFactoty;
+        }
+
         public T GetById(int id)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
-                return session.Get<T>(id);
+            using (_session = _sessionFactory.OpenSession())
+                return _session.Get<T>(id);
         }
 
         public IList<T> GetAll()
         {
-            using (ISession session = NHibernateHelper.OpenSession())
-                return session.QueryOver<T>().List();
+            using (_session = _sessionFactory.OpenSession())
+                return _session.QueryOver<T>().List();
         }
 
         public IList<T> ReturnByHql(string hql)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
-                return session.CreateQuery(hql).List<T>();
+            using (_session = _sessionFactory.OpenSession())
+                return _session.CreateQuery(hql).List<T>();
         }
 
         public async Task<T> Save(T entity)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
-            {
-                using (ITransaction transaction = session.BeginTransaction())
+            try
+            {                
+                using (_session = _sessionFactory.OpenSession())
                 {
-                    await session.SaveAsync(entity);
-                    transaction.Commit();
+                    using (ITransaction transaction = _session.BeginTransaction())
+                    {
+                        await _session.SaveAsync(entity);
+                        await transaction.CommitAsync();                        
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception();
             }
             return entity;
         }
 
         public T Update(T entity)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
+            using (_session = _sessionFactory.OpenSession())
             {
-                using (ITransaction transaction = session.BeginTransaction())
+                using (ITransaction transaction = _session.BeginTransaction())
                 {
-                    session.UpdateAsync(entity);
+                    _session.UpdateAsync(entity);
                     transaction.Commit();
                 }
             }
@@ -54,11 +70,11 @@ namespace AgendaOnline.Infrastructure.NHibernate.Repositories
         }
         public T Delete(T entity)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
+            using (_session = _sessionFactory.OpenSession())
             {
-                using (ITransaction transaction = session.BeginTransaction())
+                using (ITransaction transaction = _session.BeginTransaction())
                 {
-                    session.DeleteAsync(entity);
+                    _session.DeleteAsync(entity);
                     transaction.Commit();
                 }
             }

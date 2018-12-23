@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaOnline.Tests", "Agend
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaOnline.Infrastructure.NHibernate", "AgendaOnline.Infrastructure.NHibernate\AgendaOnline.Infrastructure.NHibernate.csproj", "{903BDBF2-D7C8-4152-AF38-F6ED4F561E62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaOnline.Infrastructure.DI", "AgendaOnline.Infrastructure.DI\AgendaOnline.Infrastructure.DI.csproj", "{04B16274-1BC2-4FCA-AC5F-46523CEF91FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaOnline.Infrastructure.DI", "AgendaOnline.Infrastructure.DI\AgendaOnline.Infrastructure.DI.csproj", "{04B16274-1BC2-4FCA-AC5F-46523CEF91FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,14 +7,8 @@ namespace AgendaOnline.Domain.Entities
 {
     public class Phone
     {
-        public Phone(int dddNumber, int number, ETypeRegistration type)
-        {            
-            Number = number;
-            Type = type;
-        }
-
-        public int Id { get; private set; }        
-        public int Number { get; private set; }
-        public ETypeRegistration Type { get; private set; }
+        public virtual int Id { get; set; }        
+        public virtual int Number { get; set; }
+        public virtual ETypeRegistration Type { get; set; }
     }
 }

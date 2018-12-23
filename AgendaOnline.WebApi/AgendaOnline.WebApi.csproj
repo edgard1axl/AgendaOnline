@@ -13,4 +13,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AgendaOnline.Application\AgendaOnline.Application.csproj" />
+    <ProjectReference Include="..\AgendaOnline.Infrastructure.DI\AgendaOnline.Infrastructure.DI.csproj" />
+  </ItemGroup>
+
 </Project>

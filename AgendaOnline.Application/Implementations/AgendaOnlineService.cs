@@ -2,7 +2,6 @@
 using AgendaOnline.Application.Messages;
 using AgendaOnline.Domain.Entities;
 using AgendaOnline.Domain.Repositories;
-using AgendaOnline.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,11 +24,19 @@ namespace AgendaOnline.Application.Implementations
             var saveContactRequest = new SaveContactRequest();
             var saveContactResponse = new SaveContactResponse();
 
-            Company company = new Company("Microsoft");
-            Address address = new Address("Rua", "123", "Centro", "São Paulo", "SP", "Brasil", "09540080");
-            Name name = new Name("Edgard", "Santos");
-
-            Contact contact = new Contact(company, address, name);
+            Contact contact = new Contact();
+            contact.City = "Mauá";
+            contact.Country = "Brasil";
+            contact.Neighborhood = "Vila Assis";
+            contact.Number = "100";
+            contact.State = "SP";
+            contact.Street = "Dom José Gaspar";
+            contact.ZipCode = "09540080";
+            contact.Complement = "proximo da goias";
+            
+            contact.Company = "Microsoft";
+            contact.FirstName = "Edgard";
+            
 
             await _contactRepository.Save(contact);
             saveContactResponse.Valido = true;

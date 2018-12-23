@@ -12,8 +12,8 @@ namespace AgendaOnline.Infrastructure.NHibernate.Maps
         {
             Table("email");
             Id(x => x.Id).Column("id");
-            Map(x => x.Email.Address).Column("address");
-            Map(x => x.Email.Type).Column("idTypeRegister");
+            Map(x => x.Address).Column("address");
+            Map(x => x.Type).Column("idTypeRegister");
         }
     }
 }

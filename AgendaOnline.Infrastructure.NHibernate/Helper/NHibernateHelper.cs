@@ -5,13 +5,18 @@ using NHibernate.Tool.hbm2ddl;
 
 namespace AgendaOnline.Infrastructure.NHibernate.Helper
 {
-    class NHibernateHelper
+    public class NHibernateHelper
     {
         private static ISessionFactory _sessionFactory;
 
         public static ISession OpenSession()
         {
             return SessionFactory().OpenSession();
+        }
+
+        public static ISessionFactory ObterSessionFactory()
+        {
+            return SessionFactory();
         }
 
         private static ISessionFactory SessionFactory()

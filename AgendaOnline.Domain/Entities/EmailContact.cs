@@ -1,4 +1,4 @@
-﻿using AgendaOnline.Domain.ValueObjects;
+﻿using AgendaOnline.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,14 +6,9 @@ using System.Text;
 namespace AgendaOnline.Domain.Entities
 {
     public class EmailContact
-    {
-        public EmailContact(int id, Email email)
-        {
-            Id = id;
-            Email = email;
-        }
-
-        public virtual int Id { get; private set; }
-        public virtual Email Email { get; private set; }
+    {     
+        public virtual int Id { get; set; }
+        public virtual string Address { get; set; }
+        public virtual ETypeRegistration Type { get; set; }
     }
 }

@@ -12,5 +12,6 @@ namespace AgendaOnline.Domain.Repositories
         IList<T> ReturnByHql(string hql);
         Task<T> Save(T item);
         T Delete(T item);
+        T Update(T entity);
     }
 }

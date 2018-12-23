@@ -1,33 +1,26 @@
-﻿using Enterprise.Framework.Collections;
-using Enterprise.Framework.DI;
-using Microsoft.AspNetCore.Http;
+﻿using AgendaOnline.Application.Contracts;
+using AgendaOnline.Application.Implementations;
+using AgendaOnline.Domain.Repositories;
+using AgendaOnline.Infrastructure.NHibernate.Helper;
+using AgendaOnline.Infrastructure.NHibernate.Repositories;
+//using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using System;
+using NHibernate;
+
 
 namespace AgendaOnline.Infrastructure.DI
 {
     public class Bootstrap
     {
-        private readonly ParsableNameValueCollection _appSettings;
-        private readonly Factory _factory = Factory.Instance;
-
-        public Bootstrap() { }
-
-        public Bootstrap(ParsableNameValueCollection appSettings)
+        public static void RegisterServices(IServiceCollection services)
         {
-            if ((_appSettings = appSettings) == null)
-                throw new ArgumentException("appSettings");
-        }
+            services.AddSingleton<Microsoft.AspNetCore.Http.IHttpContextAccessor, Microsoft.AspNetCore.Http.HttpContextAccessor>();
 
-        public void Initialize(IServiceCollection services)
-        {
-            _factory.Register(_appSettings);
-            RegisterWebApiSecurity(services);
-        }
+            //Domain Repositories
+            services.AddScoped<IContactRepository, ContactRepository>();
 
-        private void RegisterWebApiSecurity(IServiceCollection services)
-        {
-            services.AddSingleton<IHttpContextAccessor, Microsoft.AspNetCore.Http.HttpContextAccessor>();
+            services.AddScoped<IAgendaOnlineService, AgendaOnlineService>();
+            services.AddSingleton<ISessionFactory>(NHibernateHelper.ObterSessionFactory());
         }
     }
 }

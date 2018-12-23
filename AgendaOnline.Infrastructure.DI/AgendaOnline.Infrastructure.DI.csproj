@@ -5,13 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Enterprise.Framework" Version="1.0.2.17" />
-    <PackageReference Include="Enterprise.Framework.DI" Version="1.0.0.3" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AgendaOnline.Application\AgendaOnline.Application.csproj" />
+    <ProjectReference Include="..\AgendaOnline.Infrastructure.NHibernate\AgendaOnline.Infrastructure.NHibernate.csproj" />
   </ItemGroup>
 
   <ItemGroup>
