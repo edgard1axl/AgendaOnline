@@ -11,18 +11,10 @@ namespace AgendaOnline.Domain.Entities
         private IList<Phone> _phones;    
         public virtual int Id { get; set; }
         public virtual string Company { get; set; }
-        public virtual IReadOnlyCollection<Phone> Phones { get; set; }        
-        public virtual string Street { get; set; }
-        public virtual string Number { get; set; }
-        public virtual string Neighborhood { get; set; }
-        public virtual string City { get; set; }
-        public virtual string State { get; set; }
-        public virtual string Country { get; set; }
-        public virtual string ZipCode { get; set; }
-        public virtual string Complement { get; set; }
-        public virtual IReadOnlyCollection<EmailContact> Emails { get; set; }
-        public virtual string FirstName { get; set; }
-        public virtual string LastName { get; set; }
+        public virtual IList<Phone> Phones { get; set; }        
+        public virtual string Address { get; set; }       
+        public virtual IList<EmailContact> Emails { get; set; }
+        public virtual string Name { get; set; }       
 
         public virtual void AddPhone(Phone phone)
         {

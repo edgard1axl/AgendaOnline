@@ -41,8 +41,8 @@ namespace AgendaOnline.WebApi.Controllers
         {
             SaveContactRequest request = new SaveContactRequest();
             request.Contact = new Domain.Entities.Contact();
-            request.Contact.City = "Mauá";
-            request.Contact.Company = "Microsoft";
+            
+            
 
             await _agendaOnlineService.SaveContractAgendaOnline(request);
 

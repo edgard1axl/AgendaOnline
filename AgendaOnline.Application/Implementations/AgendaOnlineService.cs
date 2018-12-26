@@ -24,24 +24,35 @@ namespace AgendaOnline.Application.Implementations
             var saveContactRequest = new SaveContactRequest();
             var saveContactResponse = new SaveContactResponse();
 
-            Contact contact = new Contact();
-            contact.City = "Mauá";
-            contact.Country = "Brasil";
-            contact.Neighborhood = "Vila Assis";
-            contact.Number = "100";
-            contact.State = "SP";
-            contact.Street = "Dom José Gaspar";
-            contact.ZipCode = "09540080";
-            contact.Complement = "proximo da goias";
+            Contact contact = new Contact();           
+            contact.Address = "Dom José Gaspar";
+            
             
             contact.Company = "Microsoft";
-            contact.FirstName = "Edgard";
+            contact.Name = "Edgard";
             
 
             await _contactRepository.Save(contact);
             saveContactResponse.Valido = true;
 
             return saveContactResponse;
+        }
+
+        public async Task<IList<Contact>> GetListContact(FilterContactRequest request)
+        {
+            request = new FilterContactRequest();
+            request.Email = "edgard1axl@msn.com";
+            request.Name = "Edgard";
+            //request.Phone = 964066989;
+
+            var contacts = await _contactRepository.GetByFilter(request.Name, request.Phone, request.Email);
+
+            return contacts;
+        }
+
+        public async Task<SaveContactResponse> UpdateContractAgendaOnline(SaveContactRequest request)
+        {
+            throw new NotImplementedException();
         }
     }
 }

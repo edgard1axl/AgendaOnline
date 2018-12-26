@@ -10,5 +10,6 @@ namespace AgendaOnline.Domain.Entities
         public virtual int Id { get; set; }
         public virtual string Address { get; set; }
         public virtual ETypeRegistration Type { get; set; }
+        public virtual Contact Contact { get; set; } 
     }
 }

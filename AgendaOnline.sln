@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Infrastructure Layer", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Test Layer", "4. Test Layer", "{A3AF3E8D-CC3D-4DA2-B514-AA44663FA109}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaOnline.WebApi", "AgendaOnline.WebApi\AgendaOnline.WebApi.csproj", "{7CB17A7E-93B3-4B09-B348-831946F81828}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaOnline.Application", "AgendaOnline.Application\AgendaOnline.Application.csproj", "{188A6E50-3ECB-47B2-ACC4-0FB07D2AFAB2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaOnline.Domain", "AgendaOnline.Domain\AgendaOnline.Domain.csproj", "{9AC4D5BD-4D7E-4CEE-882F-8A8400283ABD}"
@@ -31,16 +29,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaOnline.Infrastructure
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaOnline.Infrastructure.DI", "AgendaOnline.Infrastructure.DI\AgendaOnline.Infrastructure.DI.csproj", "{04B16274-1BC2-4FCA-AC5F-46523CEF91FB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaOnline.MVC", "AgendaOnline.MVC\AgendaOnline.MVC.csproj", "{DCFC587F-C613-49C3-83B5-E89FFF9D3E3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7CB17A7E-93B3-4B09-B348-831946F81828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7CB17A7E-93B3-4B09-B348-831946F81828}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7CB17A7E-93B3-4B09-B348-831946F81828}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7CB17A7E-93B3-4B09-B348-831946F81828}.Release|Any CPU.Build.0 = Release|Any CPU
 		{188A6E50-3ECB-47B2-ACC4-0FB07D2AFAB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{188A6E50-3ECB-47B2-ACC4-0FB07D2AFAB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{188A6E50-3ECB-47B2-ACC4-0FB07D2AFAB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,6 +57,10 @@ Global
 		{04B16274-1BC2-4FCA-AC5F-46523CEF91FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04B16274-1BC2-4FCA-AC5F-46523CEF91FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04B16274-1BC2-4FCA-AC5F-46523CEF91FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCFC587F-C613-49C3-83B5-E89FFF9D3E3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCFC587F-C613-49C3-83B5-E89FFF9D3E3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCFC587F-C613-49C3-83B5-E89FFF9D3E3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCFC587F-C613-49C3-83B5-E89FFF9D3E3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

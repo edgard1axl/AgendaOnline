@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AgendaOnline.Infrastructure.NHibernate.Maps
+namespace AgendaOnline.Infrastructure.NHibernate.Mapppings
 {
     public class PhoneMap : ClassMap<Phone>
     {
@@ -14,8 +14,9 @@ namespace AgendaOnline.Infrastructure.NHibernate.Maps
             Table("phone");
             Id(x => x.Id).Column("id");
             Map(x => x.Number).Column("number");
-            Map(x => x.Type).Column("idTypeRegister")
-            .Not.LazyLoad();
+            Map(x => x.Type).Column("idTypeRegister").CustomType<int>();
+
+            References(x => x.Contact).Cascade.Merge().Column("idContact");
         }
     }
 }
