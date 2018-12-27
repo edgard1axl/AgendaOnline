@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AgendaOnline.Application.Contracts;
+using AgendaOnline.Application.Messages;
 using AgendaOnline.Domain.Entities;
 using AgendaOnline.MVC.Models;
 using Microsoft.AspNetCore.Http;
@@ -22,10 +23,10 @@ namespace AgendaOnline.MVC.Controllers
         // GET: AgendaOnline
         public async Task<ActionResult> Index()
         {
-            IList<Contact> contacts = await _agendaOnlineService.GetListContact(null);
-            ContactViewModel model = new ContactViewModel();
-            model.MapContact(contacts);
-            return View(model);
+            //IList<Contact> contacts = await _agendaOnlineService.GetListContact(null);
+            //ContactViewModel model = new ContactViewModel();
+            //model.MapContact(contacts);
+            return View();
         }
 
         // GET: AgendaOnline/Details/5
@@ -44,20 +45,17 @@ namespace AgendaOnline.MVC.Controllers
             return View(resultado);
         }
 
-        // GET: AgendaOnline/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         // POST: AgendaOnline/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create([Bind]ContactViewModel contactModel)
         {
             try
             {
-                // TODO: Add insert logic here
+                var contact = contactModel.MapModelToContact(contactModel);
+                SaveContactRequest request = new SaveContactRequest();
+                request.Contact = contact;
+                await _agendaOnlineService.SaveContractAgendaOnline(request);
 
                 return RedirectToAction(nameof(Index));
             }

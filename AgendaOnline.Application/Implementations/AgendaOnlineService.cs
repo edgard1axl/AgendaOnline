@@ -20,19 +20,10 @@ namespace AgendaOnline.Application.Implementations
         }
 
         public async Task<SaveContactResponse> SaveContractAgendaOnline(SaveContactRequest request)
-        {
-            var saveContactRequest = new SaveContactRequest();
-            var saveContactResponse = new SaveContactResponse();
+        {            
+            var saveContactResponse = new SaveContactResponse();     
 
-            Contact contact = new Contact();           
-            contact.Address = "Dom José Gaspar";
-            
-            
-            contact.Company = "Microsoft";
-            contact.Name = "Edgard";
-            
-
-            await _contactRepository.Save(contact);
+            await _contactRepository.Save(request.Contact);
             saveContactResponse.Valido = true;
 
             return saveContactResponse;

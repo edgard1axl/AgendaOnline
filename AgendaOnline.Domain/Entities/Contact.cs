@@ -6,9 +6,7 @@ using System.Text;
 namespace AgendaOnline.Domain.Entities
 {
     public class Contact
-    {
-        private IList<EmailContact> _emails;
-        private IList<Phone> _phones;    
+    {       
         public virtual int Id { get; set; }
         public virtual string Company { get; set; }
         public virtual IList<Phone> Phones { get; set; }        
@@ -20,16 +18,16 @@ namespace AgendaOnline.Domain.Entities
         {
             if(phone != null)
             {
-                if(_phones.Count > 0)
+                if(Phones.Count > 0)
                 {
-                    if(_phones.Where(x => x.Type == phone.Type).ToList().Count == 0)
+                    if(Phones.Where(x => x.Type == phone.Type).ToList().Count == 0)
                     {
-                        _phones.Add(phone);
+                        Phones.Add(phone);
                     }
                 }
                 else
                 {
-                    _phones.Add(phone);
+                    Phones.Add(phone);
                 }
 
             }
@@ -39,16 +37,16 @@ namespace AgendaOnline.Domain.Entities
         {
             if (email != null)
             {
-                if (_emails.Count > 0)
+                if (Emails.Count > 0)
                 {
-                    if (_emails.Where(x => x.Type == email.Type).ToList().Count == 0)
+                    if (Emails.Where(x => x.Type == email.Type).ToList().Count == 0)
                     {
-                        _emails.Add(email);
+                        Emails.Add(email);
                     }
                 }
                 else
                 {
-                    _emails.Add(email);
+                    Emails.Add(email);
                 }
 
             }

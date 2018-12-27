@@ -4,43 +4,70 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Agenda Online</h2>
+
+<h4>Cadastro de Contato</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">       
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Nome:</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adress" class="control-label">Endereço:</label>
+                <input asp-for="Adress" class="form-control" />
+                <span asp-validation-for="Adress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneHome" class="control-label">Telefone Residencial:</label>
+                <input asp-for="PhoneHome" class="form-control" />
+                <span asp-validation-for="PhoneHome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneWork" class="control-label">Telefone do Trabalho:</label>
+                <input asp-for="PhoneWork" class="form-control" />
+                <span asp-validation-for="PhoneWork" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneOther" class="control-label">Telefone(Outro):</label>
+                <input asp-for="PhoneOther" class="form-control" />
+                <span asp-validation-for="PhoneOther" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailHome" class="control-label">E-mail:</label>                
+                <input asp-for="EmailHome" class="form-control" />
+                <span asp-validation-for="EmailHome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailWork" class="control-label">E-mail do trabalho:</label>                
+                <input asp-for="EmailWork" class="form-control" />
+                <span asp-validation-for="EmailWork" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailOther" class="control-label">E-mail(Outro):</label>                
+                <input asp-for="EmailOther" class="form-control" />
+                <span asp-validation-for="EmailOther" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company" class="control-label">Empresa:</label>
+                <input asp-for="Company" class="form-control" />
+                <span asp-validation-for="Company" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
 
 <div>
-    <h4>ContactViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        @foreach (var item in Model.Contacts)
-        {
-            <dt>
-                Id
-            </dt>
-            <dd>
-                @item.Id
-            </dd>
-            <dt>
-                Empresa
-            </dt>
-            <dd>
-                @item.Company
-            </dd>
-            <dt>
-                Endereço
-            </dt>
-            <dd>
-                @item.Address
-            </dd>
-            <dt>
-                Nome
-            </dt>
-            <dd>
-                @item.Name
-            </dd>
-        }
+    <a asp-action="Index">Voltar para a lista</a>
+</div>
 
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

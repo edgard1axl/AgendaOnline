@@ -8,11 +8,72 @@ namespace AgendaOnline.MVC.Models
 {
     public class ContactViewModel
     {
-        public IList<Contact> Contacts;
+        public string Name { get; set; }
+        public string Adress { get; set; }
+        public int Phone { get; set; }
+        public string EmailHome { get; set; }
+        public string EmailWork { get; set; }
+        public string EmailOther { get; set; }
+        public string Company { get; set; }
+        public int? PhoneHome { get; set; }
+        public int? PhoneWork { get; set; }
+        public int? PhoneOther { get; set; }
 
-        public void MapContact(IList<Contact> contacts)
+        public Contact MapModelToContact(ContactViewModel model)
         {
-            Contacts = contacts;   
+            Contact contact = new Contact();
+
+            contact.AddEmail(new EmailContact()
+            {
+                Address = model.EmailHome,
+                Type = Domain.Enums.ETypeRegistration.casa
+            });
+
+            contact.AddEmail(new EmailContact()
+            {
+                Address = model.EmailWork,
+                Type = Domain.Enums.ETypeRegistration.trabalho
+            });
+
+            contact.AddEmail(new EmailContact()
+            {
+                Address = model.EmailOther,
+                Type = Domain.Enums.ETypeRegistration.outro
+            });
+
+            if (model.PhoneHome != null)
+            {
+                contact.AddPhone(new Domain.Entities.Phone()
+                {
+                    Number = (int)model.PhoneHome,
+                    Type = Domain.Enums.ETypeRegistration.casa
+                });
+            }
+
+            if (model.PhoneWork != null)
+            {
+                contact.AddPhone(new Domain.Entities.Phone()
+                {
+                    Number = (int)model.PhoneWork,
+                    Type = Domain.Enums.ETypeRegistration.trabalho
+                });
+            }
+            if (model.PhoneOther != null)
+            {
+                contact.AddPhone(new Domain.Entities.Phone()
+                {
+                    Number = (int)model.PhoneOther,
+                    Type = Domain.Enums.ETypeRegistration.outro
+                });
+            }
+
+            contact.Address = model.Adress;
+            contact.Company = model.Company;
+            contact.Name = model.Name;
+
+            return contact;
         }
     }
+
+    
 }
