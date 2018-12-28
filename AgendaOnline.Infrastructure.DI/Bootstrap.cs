@@ -18,6 +18,8 @@ namespace AgendaOnline.Infrastructure.DI
 
             //Domain Repositories
             services.AddScoped<IContactRepository, ContactRepository>();
+            services.AddScoped<IEmailRepository, EmailRepository>();
+            services.AddScoped<IPhoneRepository, PhoneRepository>();
 
             services.AddScoped<IAgendaOnlineService, AgendaOnlineService>();
             services.AddSingleton<ISessionFactory>(NHibernateHelper.ObterSessionFactory());

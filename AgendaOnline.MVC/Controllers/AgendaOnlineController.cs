@@ -45,6 +45,11 @@ namespace AgendaOnline.MVC.Controllers
             return View(resultado);
         }
 
+        public ActionResult Create(int id)
+        {
+            return View();
+        }
+
         // POST: AgendaOnline/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -53,8 +58,10 @@ namespace AgendaOnline.MVC.Controllers
             try
             {
                 var contact = contactModel.MapModelToContact(contactModel);
-                SaveContactRequest request = new SaveContactRequest();
-                request.Contact = contact;
+                SaveContactRequest request = new SaveContactRequest
+                {
+                    Contact = contact
+                };                
                 await _agendaOnlineService.SaveContractAgendaOnline(request);
 
                 return RedirectToAction(nameof(Index));

@@ -18,7 +18,7 @@ namespace AgendaOnline.Domain.Entities
         {
             if(phone != null)
             {
-                if(Phones.Count > 0)
+                if(Phones?.Count > 0)
                 {
                     if(Phones.Where(x => x.Type == phone.Type).ToList().Count == 0)
                     {
@@ -27,6 +27,7 @@ namespace AgendaOnline.Domain.Entities
                 }
                 else
                 {
+                    Phones = new List<Phone>();
                     Phones.Add(phone);
                 }
 
@@ -37,7 +38,7 @@ namespace AgendaOnline.Domain.Entities
         {
             if (email != null)
             {
-                if (Emails.Count > 0)
+                if (Emails?.Count > 0)
                 {
                     if (Emails.Where(x => x.Type == email.Type).ToList().Count == 0)
                     {
@@ -46,6 +47,7 @@ namespace AgendaOnline.Domain.Entities
                 }
                 else
                 {
+                    Emails = new List<EmailContact>();
                     Emails.Add(email);
                 }
 

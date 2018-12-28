@@ -13,10 +13,14 @@ namespace AgendaOnline.Application.Implementations
     {
 
         private readonly IContactRepository _contactRepository;
+        private readonly IEmailRepository _emailRepository;
+        private readonly IPhoneRepository _phoneRepository;
 
-        public AgendaOnlineService(IContactRepository contactRepository)
+        public AgendaOnlineService(IContactRepository contactRepository, IEmailRepository emailRepository, IPhoneRepository phoneRepository)
         {
             _contactRepository = contactRepository;
+            _emailRepository = emailRepository;
+            _phoneRepository = phoneRepository;
         }
 
         public async Task<SaveContactResponse> SaveContractAgendaOnline(SaveContactRequest request)
@@ -24,6 +28,20 @@ namespace AgendaOnline.Application.Implementations
             var saveContactResponse = new SaveContactResponse();     
 
             await _contactRepository.Save(request.Contact);
+
+            foreach (var item in request.Contact.Emails)
+            {
+                item.Contact = request.Contact;
+            }
+
+            foreach (var item in request.Contact.Phones)
+            {
+                item.Contact = request.Contact;
+            }
+
+            await _emailRepository.SaveList(request.Contact.Emails);
+            await _phoneRepository.SaveList(request.Contact.Phones);           
+
             saveContactResponse.Valido = true;
 
             return saveContactResponse;

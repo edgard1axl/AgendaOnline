@@ -33,8 +33,8 @@ namespace AgendaOnline.Infrastructure.NHibernate.Helper
                     )
                 )
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<NHibernateHelper>())
-                .ExposeConfiguration(c => c.Properties.Add("hbm2ddl.keywords", "none"))
-
+                .ExposeConfiguration(c => c.Properties.Add("hbm2ddl.keywords", "auto-quote"))
+                .ExposeConfiguration(c => c.Properties.Add("adonet.batch_size", "1"))
               // Cria as tabelas do Banco de Dados
 
               //.ExposeConfiguration(cfg =>
