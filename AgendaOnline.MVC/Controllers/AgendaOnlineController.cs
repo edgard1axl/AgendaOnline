@@ -21,11 +21,20 @@ namespace AgendaOnline.MVC.Controllers
         }
 
         // GET: AgendaOnline
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             //IList<Contact> contacts = await _agendaOnlineService.GetListContact(null);
             //ContactViewModel model = new ContactViewModel();
             //model.MapContact(contacts);
+
+            Dictionary<int, string> tipos = new Dictionary<int, string>();
+            foreach (Domain.Enums.ETypeRegistration foo in Enum.GetValues(typeof(Domain.Enums.ETypeRegistration)))
+            {
+                tipos.Add((int)foo, foo.ToString());
+            }
+
+            ViewBag.Tipos = tipos;
+
             return View();
         }
 
